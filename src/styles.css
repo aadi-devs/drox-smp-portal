@@ -66,7 +66,7 @@
 
 :root {
   --radius: 0.9rem;
-  --background: oklch(0.16 0.018 300);
+  --background: oklch(0.14 0.02 300);
   --foreground: oklch(0.96 0.005 300);
   --card: oklch(0.2 0.022 300);
   --card-foreground: oklch(0.96 0.005 300);
@@ -88,9 +88,10 @@
   --surface: oklch(0.19 0.02 300);
   --gradient-brand: linear-gradient(135deg, oklch(0.58 0.24 300), oklch(0.68 0.2 320));
   --gradient-panel: linear-gradient(160deg, oklch(0.22 0.03 300 / 90%), oklch(0.17 0.02 300 / 90%));
+  --gradient-hero: linear-gradient(120deg, oklch(0.18 0.06 300) 0%, oklch(0.26 0.13 300) 45%, oklch(0.16 0.05 305) 100%);
   --glow-brand: 0 0 0 1px oklch(0.58 0.24 300 / 35%), 0 18px 60px -20px oklch(0.58 0.24 300 / 80%);
   --shadow-panel: 0 24px 70px -30px oklch(0 0 0 / 90%);
-  --font-display: "Bebas Neue", sans-serif;
+  --font-display: "Outfit", sans-serif;
   --font-body: "Outfit", sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -157,7 +158,8 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    letter-spacing: 0.02em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
