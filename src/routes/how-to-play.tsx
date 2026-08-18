@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { IpCopy } from "@/components/ip-copy";
+import { Reveal } from "@/components/reveal";
+import { TiltCard } from "@/components/tilt-card";
+import { FloatingCube } from "@/components/floating-cube";
 import { SERVER_IP, SERVER_PORT } from "@/lib/server-info";
 
 export const Route = createFileRoute("/how-to-play")({
@@ -39,42 +42,56 @@ const bedrock = [
 
 function HowToPlayPage() {
   return (
-    <div className="mx-auto max-w-5xl px-5 py-16">
-      <h1 className="text-5xl md:text-6xl">How to play</h1>
-      <p className="mt-3 max-w-xl text-muted-foreground">
+    <div className="relative mx-auto max-w-5xl px-5 py-16">
+      <FloatingCube className="animate-float absolute right-4 top-8 hidden lg:block" size={70} />
+      <h1 className="animate-slide-left text-3d text-5xl md:text-6xl">How to play</h1>
+      <p className="animate-fade-up mt-3 max-w-xl text-muted-foreground" style={{ animationDelay: "140ms" }}>
         Same IP, same port, same world — whichever edition you play on.
       </p>
-      <IpCopy className="mt-8 max-w-md" />
+      <Reveal className="mt-8">
+        <IpCopy className="max-w-md" />
+      </Reveal>
 
       <div className="mt-12 grid gap-5 md:grid-cols-2">
         {[
           { title: "Java Edition", steps: java },
           { title: "Bedrock Edition", steps: bedrock },
-        ].map((col) => (
-          <div key={col.title} className="glow-panel rounded-2xl p-6">
-            <h2 className="text-3xl">{col.title}</h2>
-            <ol className="mt-5 space-y-4">
-              {col.steps.map((s, i) => (
-                <li key={s} className="flex gap-3 text-sm text-muted-foreground">
-                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-                    {i + 1}
-                  </span>
-                  {s}
-                </li>
-              ))}
-            </ol>
-          </div>
+        ].map((col, ci) => (
+          <Reveal key={col.title} delay={ci * 150} animation={ci ? "slide-right" : "slide-left"}>
+            <TiltCard className="glow-panel rounded-2xl p-6">
+              <div>
+                <h2 className="text-3xl">{col.title}</h2>
+                <ol className="mt-5 space-y-4">
+                  {col.steps.map((st, i) => (
+                    <li
+                      key={st}
+                      className="group flex gap-3 text-sm text-muted-foreground transition-all duration-300 hover:translate-x-1 hover:text-foreground"
+                    >
+                      <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground transition-transform duration-300 group-hover:scale-110">
+                        {i + 1}
+                      </span>
+                      {st}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </TiltCard>
+          </Reveal>
         ))}
       </div>
 
-      <div className="glow-panel mt-8 rounded-2xl p-6">
-        <h2 className="text-3xl">First steps in game</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Run <code className="font-mono text-foreground">/kit starter</code> at spawn, walk a few
-          thousand blocks out, then claim your base with a golden shovel. Use{" "}
-          <code className="font-mono text-foreground">/sethome</code> so you never lose it.
-        </p>
-      </div>
+      <Reveal animation="scale-in" className="mt-8">
+        <TiltCard max={5} className="glow-panel rounded-2xl p-6">
+          <div>
+            <h2 className="text-3xl">First steps in game</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Run <code className="font-mono text-foreground">/kit starter</code> at spawn, walk a
+              few thousand blocks out, then claim your base with a golden shovel. Use{" "}
+              <code className="font-mono text-foreground">/sethome</code> so you never lose it.
+            </p>
+          </div>
+        </TiltCard>
+      </Reveal>
     </div>
   );
 }
