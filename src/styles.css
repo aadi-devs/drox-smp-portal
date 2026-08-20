@@ -389,7 +389,6 @@
 }
 
 @utility tilt-inner {
-  transform: translateZ(26px);
   transform-style: preserve-3d;
   height: 100%;
 }
