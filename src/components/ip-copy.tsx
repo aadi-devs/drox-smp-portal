@@ -23,7 +23,7 @@ export function IpCopy({ className = "" }: { className?: string }) {
           setCopied(true);
           setTimeout(() => setCopied(false), 1600);
         }}
-        className="hover-grow ml-auto inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[var(--glow-brand)] active:scale-95"
+        className="soft ml-auto inline-flex items-center gap-2 rounded-xl bg-[image:var(--gradient-brand)] px-4 py-2 text-sm font-semibold text-primary-foreground hover:-translate-y-0.5 hover:shadow-[var(--glow-brand)] active:translate-y-0"
       >
         {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
         {copied ? "Copied" : "Copy IP"}
