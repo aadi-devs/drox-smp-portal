@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from "react";
+import { cloneElement, isValidElement, type ReactElement, type ReactNode, useState } from "react";
 import { Crown, MessageSquarePlus, Ticket, ArrowUpRight } from "lucide-react";
 import {
   Dialog,
@@ -6,7 +6,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { DISCORD_OWNER, DISCORD_URL } from "@/lib/server-info";
 
@@ -23,7 +22,11 @@ export function DiscordDialog({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+      {isValidElement(children)
+        ? cloneElement(children as ReactElement<{ onClick?: () => void }>, {
+            onClick: () => setOpen(true),
+          })
+        : children}
       <DialogContent className="glow-panel overflow-hidden rounded-3xl border-border/70 p-0 sm:max-w-md">
         <div
           aria-hidden
