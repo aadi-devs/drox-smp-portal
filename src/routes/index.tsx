@@ -18,12 +18,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Join Drox SMP at play.droxsmp.fun:25585. A survival multiplayer world for Java and Bedrock players with ranks, events and a friendly community.",
+          "Join Drox SMP at play.droxsmp.fun:19150. A survival multiplayer world for Java and Bedrock players with ranks, events and a friendly community.",
       },
       { property: "og:title", content: "Drox SMP — Java & Bedrock Minecraft Server" },
       {
         property: "og:description",
-        content: "Survival multiplayer on play.droxsmp.fun:25585. Java and Bedrock supported.",
+        content: "Survival multiplayer on play.droxsmp.fun:19150. Java and Bedrock supported.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -140,7 +140,7 @@ function Index() {
             <Magnetic className="animate-fade-up mt-9 block w-fit" strength={0.28}>
               <Link
                 to="/how-to-play"
-                className="group inline-flex items-center gap-16 rounded-md border border-primary/40 bg-background/50 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary/20 hover:shadow-[var(--glow-brand)]"
+                className="soft group inline-flex items-center gap-16 rounded-xl border border-primary/40 bg-background/40 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] backdrop-blur-xl hover:-translate-y-1 hover:border-primary/70 hover:bg-primary/15 hover:shadow-[var(--glow-brand)]"
                 style={{ animationDelay: "300ms" }}
               >
                 Play now
@@ -169,7 +169,7 @@ function Index() {
               className="animate-float w-full drop-shadow-[0_30px_60px_oklch(0.58_0.24_300_/_0.45)]"
               style={{
                 transform: `rotateX(${y * -10}deg) rotateY(${x * 14}deg) translateZ(0)`,
-                transition: "transform 0.25s ease-out",
+                transition: "transform 0.6s var(--ease-smooth)",
               }}
             />
           </div>

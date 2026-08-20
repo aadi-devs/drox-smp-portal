@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Play } from "lucide-react";
+import { DiscordDialog } from "@/components/discord-dialog";
 
 const links = [
   { to: "/", label: "Home" },
@@ -31,9 +32,17 @@ export function SiteNav() {
               {l.label}
             </Link>
           ))}
+          <DiscordDialog
+            title="Need support?"
+            intent="Join the Drox SMP Discord and create a ticket — for purchases, appeals or any help you need."
+          >
+            <button className="soft animate-fade-up ml-auto rounded-lg border border-border/70 px-4 py-2 text-sm text-muted-foreground hover:border-primary/60 hover:text-foreground">
+              Support
+            </button>
+          </DiscordDialog>
           <Link
             to="/how-to-play"
-            className="animate-fade-up ml-auto hidden items-center gap-3 md:flex"
+            className="animate-fade-up hidden items-center gap-3 md:ml-6 md:flex"
             style={{ animationDelay: "420ms" }}
           >
             <span className="animate-glow-pulse grid h-8 w-8 place-items-center rounded-sm bg-primary text-primary-foreground [animation-duration:2.5s] [filter:none]">

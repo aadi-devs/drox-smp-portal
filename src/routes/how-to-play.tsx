@@ -12,12 +12,12 @@ export const Route = createFileRoute("/how-to-play")({
       {
         name: "description",
         content:
-          "Step-by-step join guide for Drox SMP on Java and Bedrock using play.droxsmp.fun with port 25585.",
+          "Step-by-step join guide for Drox SMP on Java and Bedrock using play.droxsmp.fun with port 19150.",
       },
       { property: "og:title", content: "How to Play — Drox SMP" },
       {
         property: "og:description",
-        content: "Connect on Java or Bedrock with play.droxsmp.fun port 25585.",
+        content: "Connect on Java or Bedrock with play.droxsmp.fun port 19150.",
       },
       { property: "og:url", content: "/how-to-play" },
     ],

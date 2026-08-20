@@ -5,6 +5,7 @@ import { Reveal } from "@/components/reveal";
 import { TiltCard } from "@/components/tilt-card";
 import { Magnetic } from "@/components/magnetic";
 import { Particles } from "@/components/particles";
+import { DiscordDialog } from "@/components/discord-dialog";
 
 export const Route = createFileRoute("/shop")({
   head: () => ({
@@ -132,11 +133,14 @@ function ShopPage() {
                       </li>
                     ))}
                   </ul>
-                  <Magnetic className="mt-6 block" strength={0.2}>
-                    <button className="w-full rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[var(--glow-brand)]">
+                  <DiscordDialog
+                    title={`Buy the ${r.name} rank`}
+                    intent={`To buy the ${r.name} rank, join the Drox SMP Discord and create a ticket. Our team will apply it to your username on Java and Bedrock.`}
+                  >
+                    <button className="soft mt-6 w-full rounded-xl bg-[image:var(--gradient-brand)] px-4 py-3 text-sm font-semibold text-primary-foreground hover:-translate-y-0.5 hover:shadow-[var(--glow-brand)] active:translate-y-0">
                       Buy {r.name}
                     </button>
-                  </Magnetic>
+                  </DiscordDialog>
                 </div>
               </TiltCard>
             </Reveal>

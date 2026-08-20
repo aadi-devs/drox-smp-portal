@@ -89,8 +89,9 @@
   --gradient-brand: linear-gradient(135deg, oklch(0.58 0.24 300), oklch(0.68 0.2 320));
   --gradient-panel: linear-gradient(160deg, oklch(0.22 0.03 300 / 90%), oklch(0.17 0.02 300 / 90%));
   --gradient-hero: linear-gradient(120deg, oklch(0.18 0.06 300) 0%, oklch(0.26 0.13 300) 45%, oklch(0.16 0.05 305) 100%);
-  --glow-brand: 0 0 0 1px oklch(0.58 0.24 300 / 35%), 0 18px 60px -20px oklch(0.58 0.24 300 / 80%);
-  --shadow-panel: 0 24px 70px -30px oklch(0 0 0 / 90%);
+  --glow-brand: 0 0 0 1px oklch(0.7 0.18 305 / 28%), 0 10px 30px -12px oklch(0.58 0.24 300 / 55%), 0 30px 80px -40px oklch(0.58 0.24 300 / 70%);
+  --shadow-panel: 0 1px 0 0 oklch(1 0 0 / 6%) inset, 0 20px 60px -32px oklch(0 0 0 / 85%);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --font-display: "Outfit", sans-serif;
   --font-body: "Outfit", sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
@@ -148,7 +149,32 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: oklch(0.58 0.24 300 / 45%);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: oklch(0.45 0.14 300 / 70%);
+    border: 2px solid var(--surface);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.58 0.24 300 / 90%);
+  }
+
   body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
@@ -167,6 +193,18 @@
   background-image: var(--gradient-panel);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(14px) saturate(120%);
+}
+
+@utility soft {
+  transition:
+    transform 0.45s var(--ease-smooth),
+    box-shadow 0.45s var(--ease-smooth),
+    background-color 0.35s var(--ease-smooth),
+    border-color 0.35s var(--ease-smooth),
+    color 0.3s var(--ease-smooth),
+    opacity 0.3s var(--ease-smooth);
+  will-change: transform;
 }
 
 @utility brand-gradient-text {
@@ -183,7 +221,7 @@
   --animate-slide-left: slide-left 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-slide-right: slide-right 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-scale-in: scale-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-float: float 6s ease-in-out infinite;
+  --animate-float: float 8s ease-in-out infinite;
   --animate-float-slow: float 9s ease-in-out infinite;
   --animate-drift: drift 22s ease-in-out infinite alternate;
   --animate-glow-pulse: glow-pulse 3.5s ease-in-out infinite;
@@ -214,7 +252,7 @@
 }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
+  50% { transform: translateY(-12px); }
 }
 @keyframes drift {
   0% { transform: translate3d(-2%, 0, 0) scale(1.05); }
@@ -239,7 +277,7 @@
     box-shadow 0.35s ease,
     border-color 0.35s ease;
   &:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     box-shadow: var(--glow-brand);
     border-color: oklch(0.58 0.24 300 / 60%);
   }
@@ -248,7 +286,7 @@
 @utility hover-grow {
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 }
 
@@ -343,15 +381,14 @@
   transform-style: preserve-3d;
   transform: rotateX(var(--rx)) rotateY(var(--ry));
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease;
+    transform 0.55s var(--ease-smooth),
+    box-shadow 0.55s var(--ease-smooth);
   &:hover {
     box-shadow: var(--glow-brand);
   }
 }
 
 @utility tilt-inner {
-  transform: translateZ(38px);
   transform-style: preserve-3d;
   height: 100%;
 }
@@ -379,17 +416,15 @@
 
 @utility text-3d {
   text-shadow:
-    0 1px 0 oklch(0.5 0.2 300),
-    0 2px 0 oklch(0.44 0.18 300),
-    0 3px 0 oklch(0.38 0.16 300),
-    0 4px 0 oklch(0.32 0.14 300),
-    0 10px 26px oklch(0.58 0.24 300 / 55%);
+    0 1px 0 oklch(0.46 0.16 300 / 70%),
+    0 2px 1px oklch(0.36 0.13 300 / 55%),
+    0 14px 40px oklch(0.58 0.24 300 / 40%);
 }
 
 @utility grid-floor {
   background-image:
-    linear-gradient(oklch(0.58 0.24 300 / 22%) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.58 0.24 300 / 22%) 1px, transparent 1px);
+    linear-gradient(oklch(0.58 0.24 300 / 14%) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.58 0.24 300 / 14%) 1px, transparent 1px);
   background-size: 60px 60px;
   transform: perspective(420px) rotateX(62deg);
   mask-image: linear-gradient(to top, oklch(0 0 0) 5%, transparent 85%);

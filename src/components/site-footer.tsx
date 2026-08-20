@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { SERVER_IP, SERVER_PORT } from "@/lib/server-info";
-import { Reveal } from "@/components/reveal";
+import { DiscordDialog } from "@/components/discord-dialog";
 
 export function SiteFooter() {
   return (
@@ -28,6 +28,12 @@ export function SiteFooter() {
           <Link to="/how-to-play" className="story-link transition-colors duration-300 hover:text-foreground">
             How to Play
           </Link>
+          <DiscordDialog
+            title="Need support?"
+            intent="Join the Drox SMP Discord and create a ticket — for purchases, appeals or any help you need."
+          >
+            <button className="story-link soft text-left hover:text-foreground">Support</button>
+          </DiscordDialog>
         </div>
       </div>
       <p className="pb-6 text-center text-xs text-muted-foreground/70">
