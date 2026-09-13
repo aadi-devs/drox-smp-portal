@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="relative overflow-hidden border-t border-border/60 bg-surface/60">
       <div
         aria-hidden
-        className="animate-aurora pointer-events-none absolute -bottom-24 left-1/2 h-64 w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]"
+        className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-[600px] -translate-x-1/2 rounded-full bg-primary/15 blur-[120px]"
       />
       <div className="relative mx-auto flex max-w-6xl flex-col gap-4 px-5 py-10 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
         <div>
