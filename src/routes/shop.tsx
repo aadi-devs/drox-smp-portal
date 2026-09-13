@@ -116,18 +116,18 @@ function ItemCard({
   kind: string;
 }) {
   return (
-    <Reveal delay={index * 110} animation="scale-in">
-      <TiltCard className={`glow-panel relative rounded-2xl p-6 ${item.featured ? "ring-1 ring-primary" : ""}`}>
-        <div className="group flex h-full flex-col">
+    <Reveal delay={index * 90}>
+      <div
+        className={`glow-panel relative h-full rounded-2xl p-6 transition-colors duration-300 hover:border-primary/40 ${item.featured ? "ring-1 ring-primary" : ""}`}
+      >
+        <div className="flex h-full flex-col">
           {item.featured && (
-            <span className="animate-glow-pulse absolute -top-3 right-4 inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary-foreground [animation-duration:2.5s] [filter:none]">
+            <span className="absolute -top-3 right-4 inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary-foreground">
               <Sparkles className="h-3 w-3" /> Popular
             </span>
           )}
           <span className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">{item.tag}</span>
-          <h3 className="brand-gradient-text mt-2 text-4xl transition-transform duration-500 group-hover:translate-x-1">
-            {item.name}
-          </h3>
+          <h3 className="brand-gradient-text mt-2 text-4xl">{item.name}</h3>
           {meta && <p className="mt-1 text-sm font-medium text-primary">{meta}</p>}
           <p className="mt-1 text-2xl font-semibold">{item.price}</p>
           <ul className="mt-5 flex-1 space-y-2 text-sm text-muted-foreground">
