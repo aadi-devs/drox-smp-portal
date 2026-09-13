@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Check, Coins, KeyRound, Sparkles, Crown, Swords, Heart } from "lucide-react";
 import { IpCopy } from "@/components/ip-copy";
 import { Reveal } from "@/components/reveal";
-import { TiltCard } from "@/components/tilt-card";
-import { Particles } from "@/components/particles";
 import { DiscordDialog } from "@/components/discord-dialog";
 
 export const Route = createFileRoute("/shop")({
