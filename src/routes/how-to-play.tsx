@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { IpCopy } from "@/components/ip-copy";
 import { Reveal } from "@/components/reveal";
-import { TiltCard } from "@/components/tilt-card";
-import { FloatingCube } from "@/components/floating-cube";
 import { SERVER_IP, SERVER_PORT } from "@/lib/server-info";
 
 export const Route = createFileRoute("/how-to-play")({
@@ -43,9 +41,8 @@ const bedrock = [
 function HowToPlayPage() {
   return (
     <div className="relative mx-auto max-w-5xl px-5 py-16">
-      <FloatingCube className="animate-float absolute right-4 top-8 hidden lg:block" size={70} />
       <h1 className="animate-slide-left text-3d text-5xl md:text-6xl">How to play</h1>
-      <p className="animate-fade-up mt-3 max-w-xl text-muted-foreground" style={{ animationDelay: "140ms" }}>
+      <p className="animate-fade-up mt-3 max-w-xl text-muted-foreground" style={{ animationDelay: "120ms" }}>
         Same IP, same port, same world — whichever edition you play on.
       </p>
       <Reveal className="mt-8">
@@ -57,40 +54,33 @@ function HowToPlayPage() {
           { title: "Java Edition", steps: java },
           { title: "Bedrock Edition", steps: bedrock },
         ].map((col, ci) => (
-          <Reveal key={col.title} delay={ci * 150} animation={ci ? "slide-right" : "slide-left"}>
-            <TiltCard className="glow-panel rounded-2xl p-6">
-              <div>
-                <h2 className="text-3xl">{col.title}</h2>
-                <ol className="mt-5 space-y-4">
-                  {col.steps.map((st, i) => (
-                    <li
-                      key={st}
-                      className="group flex gap-3 text-sm text-muted-foreground transition-all duration-300 hover:translate-x-1 hover:text-foreground"
-                    >
-                      <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground transition-transform duration-300 group-hover:scale-110">
-                        {i + 1}
-                      </span>
-                      {st}
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </TiltCard>
+          <Reveal key={col.title} delay={ci * 120}>
+            <div className="glow-panel h-full rounded-2xl p-6 transition-colors duration-300 hover:border-primary/40">
+              <h2 className="text-3xl">{col.title}</h2>
+              <ol className="mt-5 space-y-4">
+                {col.steps.map((st, i) => (
+                  <li key={st} className="flex gap-3 text-sm text-muted-foreground">
+                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+                      {i + 1}
+                    </span>
+                    {st}
+                  </li>
+                ))}
+              </ol>
+            </div>
           </Reveal>
         ))}
       </div>
 
-      <Reveal animation="scale-in" className="mt-8">
-        <TiltCard max={5} className="glow-panel rounded-2xl p-6">
-          <div>
-            <h2 className="text-3xl">First steps in game</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Run <code className="font-mono text-foreground">/kit starter</code> at spawn, walk a
-              few thousand blocks out, then claim your base with a golden shovel. Use{" "}
-              <code className="font-mono text-foreground">/sethome</code> so you never lose it.
-            </p>
-          </div>
-        </TiltCard>
+      <Reveal className="mt-8">
+        <div className="glow-panel rounded-2xl p-6">
+          <h2 className="text-3xl">First steps in game</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Run <code className="font-mono text-foreground">/kit starter</code> at spawn, walk a
+            few thousand blocks out, then claim your base with a golden shovel. Use{" "}
+            <code className="font-mono text-foreground">/sethome</code> so you never lose it.
+          </p>
+        </div>
       </Reveal>
     </div>
   );

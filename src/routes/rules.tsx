@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/reveal";
-import { TiltCard } from "@/components/tilt-card";
 
 export const Route = createFileRoute("/rules")({
   head: () => ({
@@ -39,29 +38,25 @@ function RulesPage() {
     <div className="relative mx-auto max-w-4xl px-5 py-16">
       <div
         aria-hidden
-        className="animate-aurora pointer-events-none absolute right-0 top-10 h-[380px] w-[380px] rounded-full bg-accent/20 blur-[130px]"
+        className="pointer-events-none absolute right-0 top-10 h-[380px] w-[380px] rounded-full bg-accent/15 blur-[130px]"
       />
       <h1 className="animate-slide-left text-3d relative text-5xl md:text-6xl">Rules</h1>
-      <p className="animate-fade-up relative mt-3 text-muted-foreground" style={{ animationDelay: "140ms" }}>
+      <p className="animate-fade-up relative mt-3 text-muted-foreground" style={{ animationDelay: "120ms" }}>
         Joining Drox SMP means you accept these rules. Ignorance isn't a defence.
       </p>
       <ol className="relative mt-10 space-y-4">
         {rules.map((r, i) => (
           <li key={r.title}>
-            <Reveal delay={i * 80} animation={i % 2 ? "slide-right" : "slide-left"}>
-              <TiltCard max={6} className="glow-panel rounded-2xl p-5">
-                <div className="group flex gap-4">
-                  <span className="font-display text-3xl leading-none text-primary transition-transform duration-500 group-hover:scale-125">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h2 className="text-2xl transition-colors duration-300 group-hover:text-primary">
-                      {r.title}
-                    </h2>
-                    <p className="mt-1 text-sm text-muted-foreground">{r.body}</p>
-                  </div>
+            <Reveal delay={i * 60}>
+              <div className="glow-panel flex gap-4 rounded-2xl p-5 transition-colors duration-300 hover:border-primary/40">
+                <span className="font-display text-3xl leading-none text-primary">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h2 className="text-2xl">{r.title}</h2>
+                  <p className="mt-1 text-sm text-muted-foreground">{r.body}</p>
                 </div>
-              </TiltCard>
+              </div>
             </Reveal>
           </li>
         ))}
